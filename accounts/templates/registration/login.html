@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}
+  Login
+{% endblock %}
+
+{% block content %}
+  <div class="row align-items-center vh-75">
+    <div class="col-md-6 offset-md-3">
+      <div class="card text-dark shadow">
+        <div class="card-body">
+          <h1 class="card-title text-center text-secondary">Login</h1>
+          <hr>
+          <form method="post">
+            <div class="row">
+              <div class="col-md-8 offset-md-2">
+
+                <ul>
+                  {% for non_field_error in form.non_field_errors %}
+                    <li class="text-danger">{{ non_field_error }}</li>
+                  {% endfor %}
+                </ul>
+                {% for hidden_field in form.hidden_fields %}
+                  {{ hidden_field.errors }}
+                  {{ hidden_field }}
+                {% endfor %}
+
+                <div class="form-floating mb-3">
+
+                  {% render_field form.username|add_class:'form-control'|attr:'autofocus' placeholder=form.username.label type='email' %}
+                  <label for="{{ form.username.id_for_label }}">{{ form.username.label }}</label>
+
+                  {% if form.username.help_text %}
+                    <div class="form-text">{{ form.username.help_text }}</div>
+                  {% endif %}
+                  {% for error in form.username.errors %}
+                    <div class="invalid-feedback d-block">{{ error }}</div>
+                  {% endfor %}
+                </div>
+
+                <div class="form-floating mb-3">
+                  {% render_field form.password|add_class:'form-control' placeholder=form.password.label %}
+                  <label for="{{ form.password.id_for_label }}">Password</label>
+
+                  {% if form.password.help_text %}
+                    <div class="form-text">{{ form.password.help_text }}</div>
+                  {% endif %}
+                  {% for error in form.password.errors %}
+                    <div class="invalid-feedback d-block text-end">{{ error }}</div>
+                  {% endfor %}
+                </div>
+
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ next }}">
+
+                <div>
+                  <button type="submit" class="btn btn-info text-white">Log In</button>
+                  <a class="link-primary text-decoration-none float-end"
+                     href="{% url 'accounts:register' %}">Register</a>
+                </div>
+
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

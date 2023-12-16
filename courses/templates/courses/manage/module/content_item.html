@@ -1,0 +1,17 @@
+{% load course %}
+<div class="card mb-3" data-id="{{ content.id }}">
+  <div class="card-body">
+    {% with item=content.item %}
+      <p>{{ item }} ({{ item|model_name }})</p>
+
+      <a href="{% url 'module_content_update' module.id item|model_name item.id %}"
+         class="d-inline-flex btn btn-primary">Edit</a>
+
+      <form action="{% url 'module_content_delete' content.id %}" method="post" class="d-inline">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete</button>
+      </form>
+    {% endwith %}
+  </div>
+
+</div>

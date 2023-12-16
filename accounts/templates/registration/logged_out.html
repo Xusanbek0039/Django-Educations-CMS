@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}
+  Logged Out
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h1 class="text-center text-secondary mb-3">Logged Out</h1>
+      <p class="text-center">You have been successfully logged out. Click
+        <a class="link-primary" href="{% url 'accounts:login' %}">here</a> to login
+        again.
+      </p>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}
+  {{ course.title }}
+{% endblock %}
+
+{% block content %}
+  {% with subject=course.subject %}
+    <div class="row col-md-12 mb-3">
+      <h2 class="text-center text-secondary">{{ course.title }} Course</h2>
+
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-2"></div>
+
+      <div class="col-md-8">
+        <h3 class="text-secondary">Overview</h3>
+        <p><a href="{% url 'course_list_subject' subject.slug %}"
+              class="link-info text-decoration-none">{{ subject }}</a> {{ course.modules.count }} modules</p>
+        <small><em>Instructor: {{ course.owner.get_full_name }}</em></small>
+        <p class="mb-3">{{ course.overview|linebreaks }}</p>
+
+        {% if not request.user in course.students.all %}
+          <div>
+            <form action="{% url 'students:student_enroll_course' %}" method="post">
+              {% csrf_token %}
+              {{ enroll_form }}
+              <button type="submit" class="btn btn-info text-white">Enroll Now</button>
+            </form>
+          </div>
+        {% endif %}
+
+      </div>
+
+
+      <div class="col-md-2"></div>
+
+    </div>
+  {% endwith %}
+{% endblock %}

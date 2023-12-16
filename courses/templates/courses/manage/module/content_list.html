@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load course %}
+
+{% block title %}
+  Module {{ module.order|add:1 }}:{{ module.title }}
+{% endblock %}
+
+{% block content %}
+  {% with course=module.course contents=module.contents.all %}
+    <div class="row mb-3">
+      <h1 class="text-center text-secondary">Course {{ course.title }}</h1>
+    </div>
+    <hr>
+
+    <div class="row mt-3">
+
+      <!-- sidebar -->
+      <div class="col-md-3">
+
+        <div class="mb-3">
+          <h3 class="text-secondary">Modules</h3>
+        </div>
+
+        <div class="list-group">
+          <ul class="list-unstyled" id="modules">
+            {% for m in course.modules.all %}
+
+              <li data-id="{{ m.id }}">
+                <a href="{% url 'module_content_list' m.id %}"
+                   class="list-group-item list-group-item-action {% if m == module %}list-group-item-info{% endif %}">
+                  Module <span id="order">{{ m.order|add:1 }}</span>
+                  <br>
+                  <em>{{ m.title }}</em>
+                </a>
+              </li>
+
+            {% empty %}
+              <li>No Modules yet</li>
+            {% endfor %}
+          </ul>
+          <a href="{% url 'course_module_update' course.id %}"
+             class="list-group-item list-group-item-action list-group-item-success text-dark">Edit Modules</a>
+        </div>
+      </div>
+
+      <!-- main content -->
+      <div class="col-md-9">
+
+        <div class="mb-3">
+          <h2 class="text-secondary text-center mb-3">Module {{ module.order|add:1 }}: {{ module.title }}</h2>
+
+          <div class="row">
+            <div class="col-md-12">
+              <h3 class="text-secondary">Module Contents</h3>
+              <div id="module-contents">
+                {% for content in contents %}
+
+                  <!-- each content item -->
+                  {% include 'courses/manage/module/content_item.html' with content=content module=module %}
+
+                {% empty %}
+                  <p>This module has no content</p>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-md-12">
+            <h3 class="text-secondary mb-3">Add new content</h3>
+            <a href="{% url 'module_content_create' module.id 'image' %}" class="btn btn-info text-white me-2">Image</a>
+            <a href="{% url 'module_content_create' module.id 'text' %}" class="btn btn-info text-white me-2">Text</a>
+            <a href="{% url 'module_content_create' module.id 'file' %}" class="btn btn-info text-white me-2">File</a>
+            <a href="{% url 'module_content_create' module.id 'video' %}" class="btn btn-info text-white">Video</a>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  {% endwith %}
+{% endblock %}
+
+{% block domready %}
+  $('#modules').sortable({
+      stop: function (event, ui){
+          modules_order = {};
+          $('#modules').children().each(function(){
+
+              $(this).find('#order').text($(this).index()+1);
+
+              modules_order[$(this).data('id')] = $(this).index();
+          });
+          $.ajax({
+              type:'POST',
+              url:"{% url 'module_order' %}",
+              contentType:'application/json;charset=utf-8',
+              dataType:'json',
+              data:JSON.stringify(modules_order)
+          });
+      }
+  });
+
+  $('#module-contents').sortable({
+      stop: function (event, ui){
+          contents_order = {}
+          $('#module-contents').children().each(function (){
+
+              contents_order[$(this).data('id')] = $(this).index();
+          });
+
+          $.ajax({
+              type: 'POST',
+              url: "{% url 'content_order' %}",
+              contentType: 'application/json;charset=utf-8',
+              dataType: 'json',
+              data:JSON.stringify(contents_order)
+          });
+      }
+  });
+
+  $('#modules').disableSelection();
+{% endblock %}
+

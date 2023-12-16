@@ -1,0 +1,38 @@
+.logo {
+    font-family: 'Mochiy Pop P One', sans-serif;
+    /*font-family: 'Patua One', cursive;*/
+    font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Mochiy Pop P One', sans-serif;
+    /*font-family: 'Patua One', cursive;*/
+    font-weight: 350;
+}
+
+li{
+    /*font-family: 'Mochiy Pop P One', sans-serif;*/
+    /*font-family: 'Patua One', cursive;*/
+    font-family: 'Roboto', sans-serif;
+    /*font-weight: 50;*/
+}
+
+.vh-25 {
+    height: 25vh;
+}
+
+.vh-50 {
+    height: 50vh;
+}
+
+.vh-75 {
+    height: 75vh;
+}
+
+.chat-bg-me {
+    background: #f9ebea;
+}
+
+.chat-bg-other {
+    background-color: #eafaf1;
+}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}
+  ({{ courses.count }}) Enrolled Courses
+{% endblock %}
+
+{% block content %}
+  <div class="row col-md-8 offset-md-2 mb-3">
+    <h1 class="text-secondary text-center">Enrolled Courses</h1>
+  </div>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      {% for course in courses %}
+
+        <div class="card mb-1">
+          <div class="card-body">
+            <h2 class="card-title text-center text-secondary">{{ course.title }}</h2>
+            <p class="text-center"><a href="{% url 'students:student_course_detail' course.id %}"
+                                      class="link-info text-decoration-none">Access Contents</a></p>
+          </div>
+        </div>
+
+      {% empty %}
+        <p>You are not enrolled in any course</p>
+      {% endfor %}
+
+    </div>
+    <div class="col-md-2"></div>
+
+  </div>
+
+{% endblock %}

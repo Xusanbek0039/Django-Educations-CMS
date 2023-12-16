@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block title %}
+  {% if course_object %}
+    Edit course {{ course_object.title }}
+  {% else %}
+    Create new course
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-8 offset-md-2 mb-3 text-center">
+      <h1>
+        {% if course_object %}
+          Edit course {{ course_object.title }}
+        {% else %}
+          Create a new course
+        {% endif %}
+      </h1>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-md-8 offset-md-2">
+
+      <div class="card border-info text-dark shadow">
+        <div class="card-body">
+          <h5 class="card-title text-center">New Course</h5>
+          <hr>
+
+          <form action="" method="post" class="form-floating">
+            {% csrf_token %}
+
+            <div class="row">
+              <div class="col-md-8 offset-md-2">
+
+                <ul>
+                  {% for non_field_error in form.non_field_errors %}
+                    <li class="text-danger">{{ non_field_error }}</li>
+                  {% endfor %}
+                </ul>
+                {% for hidden_field in form.hidden_fields %}
+                  {{ hidden_field.errors }}
+                  {{ hidden_field }}
+                {% endfor %}
+
+                <div class="form-floating mb-3">
+
+                  {{ form.subject|add_class:'form-select'|attr:"placeholder:form.subject.label" }}
+                  <label for="{{ form.subject.id_for_label }}">{{ form.subject.label }}</label>
+
+                  {% for error in form.subject.errors %}
+                    <div class="invalid-feedback d-block text-end">{{ error }}</div>
+                  {% endfor %}
+                </div>
+
+                <div class="form-floating mb-3">
+
+                  {{ form.title|add_class:'form-control'|attr:"placeholder:form.title.label" }}
+                  <label for="{{ form.title.id_for_label }}">{{ form.title.label }}</label>
+
+                  {% for error in form.title.errors %}
+                    <div class="invalid-feedback d-block text-end">{{ error }}</div>
+                  {% endfor %}
+                </div>
+
+                <div class="form-floating mb-3">
+
+                  {#{% render_field form.slug class='form-control' placeholder=form.slug.label %}#}
+                  {{ form.slug|add_class:'form-control'|attr:'placeholder:form.slug.label' }}
+                  <label for="{{ form.slug.id_for_label }}">{{ form.slug.label }}</label>
+
+                  {% for error in form.slug.errors %}
+                    <div class="invalid-feedback d-block text-end">{{ error }}</div>
+                  {% endfor %}
+                </div>
+
+                <div class="form-floating mb-3">
+
+                  {{ form.overview|add_class:'form-control'|attr:"placeholder:form.overview.label"|attr:'style:height: 300px' }}
+                  <label for="{{ form.overview.id_for_label }}">{{ form.overview.label }}</label>
+
+                  {% for error in form.overview.errors %}
+                    <div class="invalid-feedback d-block text-end">{{ error }}</div>
+                  {% endfor %}
+                </div>
+
+
+                <div class="mb-3">
+                  <button type="submit" class="btn btn-info me-1 text-white">Save Course</button>
+                  <a href="{% url 'manage_course_list' %}" class="btn btn-primary">Back</a>
+                </div>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}

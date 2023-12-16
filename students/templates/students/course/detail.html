@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load cache %}
+{% load widget_tweaks %}
+
+{% block title %}
+  {{ course.title }}
+{% endblock %}
+
+{% block content %}
+  <!-- heading -->
+  <div class="row">
+  <h1 class="text-secondary text-center">{{ course.title }}</h1>
+  </div>
+
+  <div class="row">
+    <!-- sidebar -->
+    <div class="col-md-3">
+      <div class="list-group">
+        {% for m in course.modules.all %}
+          <a href="{% url 'students:student_course_detail_module' course.id m.id %}"
+             class="list-group-item list-group-item-action {% if m.id == module.id %}list-group-item-info{% endif %}">
+            Module {{ m.order|add:1 }}
+            <br>
+            <em>{{ m.title }}</em>
+          </a>
+        {% empty %}
+          No modules yet
+        {% endfor %}
+
+        <a href="{% url 'chat:course_chat_room' course.id %}"
+             class="list-group-item list-group-item-action list-group-item-warning">
+            Course chat room
+
+          </a>
+      </div>
+    </div>
+
+    <!-- main content -->
+    <div class="col-md-9">
+{#    {% cache 60 modules_content module %}#}
+      {% for content in module.contents.all %}
+        {% with item=content.item %}
+          <h2 class="text-secondary">{{ item.title }}</h2>
+          {{ item.render }}
+        {% endwith %}
+      {% endfor %}
+{#    {% endcache %}#}
+
+    </div>
+
+  </div>
+
+{% endblock %}

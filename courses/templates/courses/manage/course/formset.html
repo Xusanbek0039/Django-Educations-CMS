@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block title %}
+  Edit {{ course.title }}
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-8 offset-md-2 mb-3 text-center">
+      <h1>
+        Edit "{{ course.title }}" Course
+      </h1>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-8 offset-md-2">
+      <div class="card border-info text-dark shadow">
+        <div class="card-body">
+          <h5 class="card-title text-center">Course Modules</h5>
+          <hr>
+
+          <form method="post">
+            <div class="row">
+              <div class="col-md-8 offset-md-2">
+                {% csrf_token %}
+
+                <ul>
+                  {% for non_field_error in form.non_field_errors %}
+                    <li class="text-danger">{{ non_field_error }}</li>
+                  {% endfor %}
+                </ul>
+                {% for hidden_field in form.hidden_fields %}
+                  {{ hidden_field.errors }}
+                  {{ hidden_field }}
+                {% endfor %}
+
+                {{ formset.management_form }}
+                {% for form in formset %}
+                  {{ form.id }}
+                  <div class="form-floating mb-3">
+
+                    {{ form.title|add_class:'form-control'|attr:'placeholder:form.title.label' }}
+                    <label for="{{ form.title.id_for_label }}">{{ form.title.label }}</label>
+
+                    {% for error in form.title.errors %}
+                      <div class="invalid-feedback d-block text-end">{{ error }}</div>
+                    {% endfor %}
+                  </div>
+
+                  <div class="form-floating mb-3">
+
+                    {{ form.description|add_class:'form-control'|attr:'placeholder:form.description.label'|attr:'style:height:200px' }}
+                    <label for="{{ form.description.id_for_label }}">{{ form.description.label }}</label>
+
+                    {% for error in form.description.errors %}
+                      <div class="invalid-feedback d-block text-end">{{ error }}</div>
+                    {% endfor %}
+                  </div>
+
+                  {% if formset.can_delete %}
+                    <div class="mb-3">
+                      <label for="{{ form.DELETE.id_for_label }}" class="form-label">{{ form.DELETE.label }}</label>
+                      {{ form.DELETE|add_class:'form-check-input' }}
+                      {% for error in form.DELETE.errors %}
+                        <div class="invalid-feedback d-block text-end">{{ error }}</div>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                  {% if not forloop.last %}
+                    <hr>
+                  {% endif %}
+
+                {% endfor %}
+
+                <div class="mb-3">
+                  <button class="btn btn-info me-2 text-white" type="submit">Submit</button>
+                  <a href="{% url 'manage_course_list' %}" class="btn btn-primary">Back</a>
+                </div>
+
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}

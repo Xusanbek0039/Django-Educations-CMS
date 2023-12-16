@@ -1,0 +1,415 @@
+[
+{
+  "model": "courses.subject",
+  "pk": 1,
+  "fields": {
+    "title": "Programming",
+    "slug": "programming"
+  }
+},
+{
+  "model": "courses.subject",
+  "pk": 2,
+  "fields": {
+    "title": "Music",
+    "slug": "music"
+  }
+},
+{
+  "model": "courses.subject",
+  "pk": 3,
+  "fields": {
+    "title": "Photography",
+    "slug": "photography"
+  }
+},
+{
+  "model": "courses.subject",
+  "pk": 4,
+  "fields": {
+    "title": "Mathematics",
+    "slug": "mathematics"
+  }
+},
+{
+  "model": "courses.subject",
+  "pk": 5,
+  "fields": {
+    "title": "Project Management",
+    "slug": "project-management"
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 1,
+  "fields": {
+    "owner": 2,
+    "subject": 1,
+    "title": "Django for Beginners",
+    "slug": "django-for-beginners",
+    "overview": "Getting started with Django",
+    "created": "2021-10-14T10:32:36.614Z",
+    "students": [
+      2,
+      3,
+      5
+    ]
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 2,
+  "fields": {
+    "owner": 4,
+    "subject": 1,
+    "title": "Python 101",
+    "slug": "python-101",
+    "overview": "Basics of Python",
+    "created": "2021-10-18T10:36:05.156Z",
+    "students": [
+      3,
+      5
+    ]
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 1,
+  "fields": {
+    "course": 1,
+    "title": "Introduction to Django",
+    "description": "Django (/ˈdʒæŋɡoʊ/ JANG-goh; sometimes stylized as django)[6] is a Python-based free and open-source web framework that follows the model–template–views (MTV) architectural pattern.[7][8] It is maintained by the Django Software Foundation (DSF), an American independent organization established as a 501(c)(3) non-profit.\r\n\r\nDjango's primary goal is to ease the creation of complex, database-driven websites. The framework emphasizes reusability and \"pluggability\" of components, less code, low coupling, rapid development, and the principle of don't repeat yourself.[9] Python is used throughout, even for settings, files, and data models. Django also provides an optional administrative create, read, update and delete interface that is generated dynamically through introspection and configured via admin models.\r\n\r\nSome well-known sites that use Django include Instagram,[10] Mozilla,[11] Disqus,[12] Bitbucket,[13] Nextdoor[14] and Clubhouse.[15]",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 2,
+  "fields": {
+    "course": 1,
+    "title": "Cheatsheet",
+    "description": "",
+    "order": 1
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 3,
+  "fields": {
+    "course": 2,
+    "title": "Introduction to Python",
+    "description": "Python is an interpreted high-level general-purpose programming language. Its design philosophy emphasizes code readability with its use of significant indentation. Its language constructs as well as its object-oriented approach aim to help programmers write clear, logical code for small and large-scale projects.[31]\r\n\r\nPython is dynamically-typed and garbage-collected. It supports multiple programming paradigms, including structured (particularly, procedural), object-oriented and functional programming. It is often described as a \"batteries included\" language due to its comprehensive standard library.[32]\r\n\r\nGuido van Rossum began working on Python in the late 1980s, as a successor to the ABC programming language, and first released it in 1991 as Python 0.9.0.[33] Python 2.0 was released in 2000 and introduced new features, such as list comprehensions and a garbage collection system using reference counting. Python 3.0 was released in 2008 and was a major revision of the language that is not completely backward-compatible. Python 2 was discontinued with version 2.7.18 in 2020.[34]\r\n\r\nPython consistently ranks as one of the most popular programming languages.[35][36][37][38]",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 4,
+  "fields": {
+    "course": 2,
+    "title": "Data types in python",
+    "description": "",
+    "order": 1
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 5,
+  "fields": {
+    "course": 2,
+    "title": "Control Flow",
+    "description": "Python's statements include (among others):\r\n\r\nThe assignment statement, using a single equals sign =.\r\nThe if statement, which conditionally executes a block of code, along with else and elif (a contraction of else-if).\r\nThe for statement, which iterates over an iterable object, capturing each element to a local variable for use by the attached block.\r\nThe while statement, which executes a block of code as long as its condition is true.\r\nThe try statement, which allows exceptions raised in its attached code block to be caught and handled by except clauses; it also ensures that clean-up code in a finally block will always be run regardless of how the block exits.\r\nThe raise statement, used to raise a specified exception or re-raise a caught exception.\r\nThe class statement, which executes a block of code and attaches its local namespace to a class, for use in object-oriented programming.\r\nThe def statement, which defines a function or method.\r\nThe with statement, which encloses a code block within a context manager (for example, acquiring a lock before the block of code is run and releasing the lock afterwards, or opening a file and then closing it), allowing resource-acquisition-is-initialization (RAII)-like behavior and replaces a common try/finally idiom.[81]\r\nThe break statement, exits from a loop.\r\nThe continue statement, skips this iteration and continues with the next item.\r\nThe del statement, removes a variable, which means the reference from the name to the value is deleted and trying to use that variable will cause an error. A deleted variable can be reassigned.\r\nThe pass statement, which serves as a NOP. It is syntactically needed to create an empty code block.\r\nThe assert statement, used during debugging to check for conditions that should apply.\r\nThe yield statement, which returns a value from a generator function and yield is also an operator. This form is used to implement coroutines.\r\nThe return statement, used to return a value from a function.\r\nThe import statement, which is used to import modules whose functions or variables can be used in the current program.",
+    "order": 2
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 6,
+  "fields": {
+    "course": 1,
+    "title": "Request Response",
+    "description": "",
+    "order": 2
+  }
+},
+{
+  "model": "courses.content",
+  "pk": 1,
+  "fields": {
+    "module": 1,
+    "content_type": 4,
+    "object_id": 1,
+    "order": 0
+  }
+},
+{
+  "model": "courses.content",
+  "pk": 2,
+  "fields": {
+    "module": 2,
+    "content_type": 6,
+    "object_id": 1,
+    "order": 0
+  }
+},
+{
+  "model": "courses.content",
+  "pk": 3,
+  "fields": {
+    "module": 3,
+    "content_type": 4,
+    "object_id": 2,
+    "order": 0
+  }
+},
+{
+  "model": "courses.content",
+  "pk": 4,
+  "fields": {
+    "module": 5,
+    "content_type": 4,
+    "object_id": 3,
+    "order": 0
+  }
+},
+{
+  "model": "courses.content",
+  "pk": 5,
+  "fields": {
+    "module": 5,
+    "content_type": 3,
+    "object_id": 1,
+    "order": 1
+  }
+},
+{
+  "model": "courses.content",
+  "pk": 6,
+  "fields": {
+    "module": 4,
+    "content_type": 6,
+    "object_id": 2,
+    "order": 0
+  }
+},
+{
+  "model": "courses.content",
+  "pk": 7,
+  "fields": {
+    "module": 6,
+    "content_type": 6,
+    "object_id": 3,
+    "order": 0
+  }
+},
+{
+  "model": "courses.content",
+  "pk": 8,
+  "fields": {
+    "module": 6,
+    "content_type": 6,
+    "object_id": 4,
+    "order": 1
+  }
+},
+{
+  "model": "courses.text",
+  "pk": 1,
+  "fields": {
+    "owner": 2,
+    "title": "Intro",
+    "created": "2021-10-18T07:07:13.466Z",
+    "updated": "2021-10-18T07:07:13.466Z",
+    "content": "Django was created in the fall of 2003, when the web programmers at the Lawrence Journal-World newspaper, Adrian Holovaty and Simon Willison, began using Python to build applications. Jacob Kaplan-Moss was hired early in Django's development shortly before Simon Willison's internship ended.[16] It was released publicly under a BSD license in July 2005. The framework was named after guitarist Django Reinhardt.[17] Adrian Holovaty is a Romani jazz guitar player and a big fan of Django Reinhardt.\r\n\r\nIn June 2008, it was announced that a newly formed Django Software Foundation (DSF) would maintain Django in the future.[18]"
+  }
+},
+{
+  "model": "courses.text",
+  "pk": 2,
+  "fields": {
+    "owner": 4,
+    "title": "Intro",
+    "created": "2021-10-18T10:36:55.245Z",
+    "updated": "2021-10-18T10:36:55.245Z",
+    "content": "Python is an interpreted high-level general-purpose programming language. Its design philosophy emphasizes code readability with its use of significant indentation. Its language constructs as well as its object-oriented approach aim to help programmers write clear, logical code for small and large-scale projects.[31]\r\n\r\nPython is dynamically-typed and garbage-collected. It supports multiple programming paradigms, including structured (particularly, procedural), object-oriented and functional programming. It is often described as a \"batteries included\" language due to its comprehensive standard library.[32]\r\n\r\nGuido van Rossum began working on Python in the late 1980s, as a successor to the ABC programming language, and first released it in 1991 as Python 0.9.0.[33] Python 2.0 was released in 2000 and introduced new features, such as list comprehensions and a garbage collection system using reference counting. Python 3.0 was released in 2008 and was a major revision of the language that is not completely backward-compatible. Python 2 was discontinued with version 2.7.18 in 2020.[34]\r\n\r\nPython consistently ranks as one of the most popular programming languages.[35][36][37][38]"
+  }
+},
+{
+  "model": "courses.text",
+  "pk": 3,
+  "fields": {
+    "owner": 4,
+    "title": "Control Flow",
+    "created": "2021-10-18T10:37:30.363Z",
+    "updated": "2021-10-18T10:37:30.363Z",
+    "content": "Python's statements include (among others):\r\n\r\nThe assignment statement, using a single equals sign =.\r\nThe if statement, which conditionally executes a block of code, along with else and elif (a contraction of else-if).\r\nThe for statement, which iterates over an iterable object, capturing each element to a local variable for use by the attached block.\r\nThe while statement, which executes a block of code as long as its condition is true.\r\nThe try statement, which allows exceptions raised in its attached code block to be caught and handled by except clauses; it also ensures that clean-up code in a finally block will always be run regardless of how the block exits.\r\nThe raise statement, used to raise a specified exception or re-raise a caught exception.\r\nThe class statement, which executes a block of code and attaches its local namespace to a class, for use in object-oriented programming.\r\nThe def statement, which defines a function or method.\r\nThe with statement, which encloses a code block within a context manager (for example, acquiring a lock before the block of code is run and releasing the lock afterwards, or opening a file and then closing it), allowing resource-acquisition-is-initialization (RAII)-like behavior and replaces a common try/finally idiom.[81]\r\nThe break statement, exits from a loop.\r\nThe continue statement, skips this iteration and continues with the next item.\r\nThe del statement, removes a variable, which means the reference from the name to the value is deleted and trying to use that variable will cause an error. A deleted variable can be reassigned.\r\nThe pass statement, which serves as a NOP. It is syntactically needed to create an empty code block.\r\nThe assert statement, used during debugging to check for conditions that should apply.\r\nThe yield statement, which returns a value from a generator function and yield is also an operator. This form is used to implement coroutines.\r\nThe return statement, used to return a value from a function.\r\nThe import statement, which is used to import modules whose functions or variables can be used in the current program."
+  }
+},
+{
+  "model": "courses.image",
+  "pk": 1,
+  "fields": {
+    "owner": 2,
+    "title": "Django Cheatsheet",
+    "created": "2021-10-18T07:07:56.245Z",
+    "updated": "2021-10-18T07:07:56.245Z",
+    "content": "images/cheatsheet.png"
+  }
+},
+{
+  "model": "courses.image",
+  "pk": 2,
+  "fields": {
+    "owner": 4,
+    "title": "Data types",
+    "created": "2021-10-18T10:38:43.209Z",
+    "updated": "2021-10-18T10:38:43.209Z",
+    "content": "images/Python-data-structure.jpg"
+  }
+},
+{
+  "model": "courses.image",
+  "pk": 3,
+  "fields": {
+    "owner": 2,
+    "title": "request response",
+    "created": "2021-10-25T11:32:05.157Z",
+    "updated": "2021-10-25T11:32:05.157Z",
+    "content": "images/django_req_res.png"
+  }
+},
+{
+  "model": "courses.image",
+  "pk": 4,
+  "fields": {
+    "owner": 2,
+    "title": "request response cycle",
+    "created": "2021-10-25T11:59:52.821Z",
+    "updated": "2021-10-25T11:59:52.821Z",
+    "content": "images/request_response_lifecycle_Django.png"
+  }
+},
+{
+  "model": "courses.video",
+  "pk": 1,
+  "fields": {
+    "owner": 4,
+    "title": "Control Flow",
+    "created": "2021-10-18T10:38:03.652Z",
+    "updated": "2021-10-18T10:38:03.652Z",
+    "content": "https://www.youtube.com/watch?v=Zp5MuPOtsSY"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 1,
+  "fields": {
+    "app_label": "courses",
+    "model": "course"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 2,
+  "fields": {
+    "app_label": "courses",
+    "model": "subject"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 3,
+  "fields": {
+    "app_label": "courses",
+    "model": "video"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 4,
+  "fields": {
+    "app_label": "courses",
+    "model": "text"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 5,
+  "fields": {
+    "app_label": "courses",
+    "model": "module"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 6,
+  "fields": {
+    "app_label": "courses",
+    "model": "image"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 7,
+  "fields": {
+    "app_label": "courses",
+    "model": "file"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 8,
+  "fields": {
+    "app_label": "courses",
+    "model": "content"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 9,
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 10,
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 11,
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 12,
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 13,
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 14,
+  "fields": {
+    "app_label": "accounts",
+    "model": "user"
+  }
+}
+]

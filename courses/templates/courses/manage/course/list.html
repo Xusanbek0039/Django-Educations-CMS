@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  My Courses
+{% endblock %}
+
+{% block content %}
+  <div class="row mb-3">
+    <div class="col-md-6 offset-md-3">
+      <h1 class="text-center text-secondary">My Courses</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      {% for course in object_list %}
+
+        <!-- each course item -->
+        {% include 'courses/manage/course/course_item.html' with course=course %}
+
+
+      {% empty %}
+        <p>You haven't created any courses yet!</p>
+      {% endfor %}
+      <a class="btn btn-info text-white shadow" href="{% url 'course_create' %}">Create New Course</a>
+    </div>
+  </div>
+{% endblock %}

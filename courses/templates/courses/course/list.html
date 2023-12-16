@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}
+  {% if subject %}
+    {{ subject.title }} courses
+  {% else %}
+    All courses
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  <div class="row col-md-12 text-center text-secondary mb-3">
+    {% if subject %}
+      <h1>{{ subject.title }} courses</h1>
+    {% else %}
+      <h1>All Courses</h1>
+    {% endif %}
+  </div>
+  <hr>
+
+  <div class="row">
+
+    <!-- sidebar -->
+    <div class="col-md-3">
+      <div class="mb-1">
+        <h3 class="text-secondary">Subjects</h3>
+      </div>
+      <div class="list-group">
+        <ul class="list-unstyled" id="subjects">
+          <li>
+            <a href="{% url 'course_list' %}"
+               class="list-group-item list-group-item-action {% if s == subject %}list-group-item-info{% endif %}">
+              <div class="d-flex justify-content-between">
+                All
+              </div>
+            </a>
+          </li>
+          {% for s in subjects %}
+            <li>
+              <a href="{% url 'course_list_subject' s.slug %}"
+                 class="list-group-item list-group-item-action {% if s == subject %}list-group-item-info{% endif %}">
+                <div class="d-flex justify-content-between">{{ s.title }}
+                  <span class="badge bg-primary rounded-pill">{{ s.total_courses }}</span>
+                </div>
+              </a>
+            </li>
+          {% empty %}
+            No Subjects
+          {% endfor %}
+
+        </ul>
+      </div>
+    </div>
+
+    <!-- contents -->
+    <div class="col-md-9">
+      <div class="col-md-12">
+        <div class="text-secondary ms-2">
+          {% if subject %}
+            <h3>{{ subject.title }} courses</h3>
+          {% else %}
+            <h3>All Courses</h3>
+          {% endif %}
+        </div>
+
+
+        {% for c in courses %}
+          {% with sub=c.subject %}
+
+            <div class="card mb-1">
+              <div class="card-body ms-2">
+                <h4 class="card-title"><a class="link-info text-decoration-none"
+                                          href="{% url 'course_detail' c.slug %}">{{ c.title }}</a></h4>
+                <h6 class="card-subtitle text-muted"><a class="link-info text-decoration-none"
+                                                        href="{% url 'course_list_subject' sub.slug %}">{{ sub.title }}</a>
+                </h6>
+                <p class="card-text mt-1">{{ c.total_modules }} modules. Instructor: {{ c.owner.get_full_name }}</p>
+
+              </div>
+            </div>
+
+          {% endwith %}
+        {% empty %}
+          <h4 class="text-secondary ms-2">No courses available</h4>
+        {% endfor %}
+
+      </div>
+    </div>
+
+  </div>
+
+
+{% endblock %}

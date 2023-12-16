@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block title %}
+  Delete Course
+{% endblock %}
+
+{% block content %}
+  <div class="row mb-3">
+    <div class="col-md-8 offset-md-2">
+      <h1 class="text-center">Delete course "{{ course_object.title }}"</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8 offset-md-2 text-center">
+      <form action="" method="post">
+        {% csrf_token %}
+        <p>Are you sure you want to delete "{{ course_object.title }}"?</p>
+        <button type="submit" class="btn btn-danger"><i class="bi bi-x"></i> Confirm</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

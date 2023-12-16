@@ -1,0 +1,13 @@
+Django
+psycopg2
+Pillow
+django-widget-tweaks
+django-braces
+django-embed-video
+django-redis==5.0.0
+djangorestframework
+channels
+channels-redis
+drf-yasg
+pyyaml
+uritemplate

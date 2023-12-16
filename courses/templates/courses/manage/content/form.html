@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}
+  {% if object %}
+    Edit {{ object.title }}
+  {% else %}
+    Add new content
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  <div class="row mb-3">
+    <div class="col-md-8 offset-md-2 text-center text-secondary">
+      {% if object %}
+        <h1>Edit {{ object.title }}</h1>
+      {% else %}
+        <h1>{{ module.title }}</h1>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-8 offset-md-2">
+      <div class="card text-dark border-info shadow">
+        <div class="card-body">
+          <h5 class="text-center text-secondary">New Content</h5>
+          <hr>
+
+          <form method="post" enctype="multipart/form-data" class="form-floating">
+            {% csrf_token %}
+
+            <div class="row">
+              <div class="col-md-8 offset-md-2">
+
+                <ul>
+                  {% for non_field_error in form.non_field_errors %}
+                    <li class="text-danger">{{ non_field_error }}</li>
+                  {% endfor %}
+                </ul>
+                {% for hidden_field in form.hidden_fields %}
+                  {{ hidden_field.errors }}
+                  {{ hidden_field }}
+                {% endfor %}
+
+                <div class="mb-3">
+                  <label for="form.title.id_for_label" class="form-label">{{ form.title.label }}</label>
+                  {{ form.title|add_class:'form-control' }}
+                  {% for error in form.title.errors %}
+                    <div class="invalid-feedback d-block text-end">{{ error }}</div>
+                  {% endfor %}
+                </div>
+
+                <div class="mb-3">
+                  <label for="form.content.id_for_label" class="form-label">{{ form.content.label }}</label>
+                  {{ form.content|add_class:'form-control' }}
+                  {% for error in form.content.errors %}
+                    <div class="invalid-feedback d-block text-end">{{ error }}</div>
+                  {% endfor %}
+                </div>
+
+              <div class="mb-3">
+                <button type="submit" class="btn btn-info text-white me-2">Create</button>
+                <a href="{% url 'module_content_list' module.id %}" class="btn btn-primary">Back</a>
+              </div>
+
+              </div>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}

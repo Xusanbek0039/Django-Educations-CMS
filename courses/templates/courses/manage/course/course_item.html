@@ -1,0 +1,15 @@
+<div class="card text-center text-dark bg-light border-info shadow mb-3">
+  <div class="card-body">
+    <h3 class="card-title text-secondary">{{ course.title }}</h3>
+    <hr>
+    <p>
+      <a class="link-danger text-decoration-none m-3" href="{% url 'course_edit' course.id %}">Edit</a>
+      <a class="link-danger text-decoration-none m-3" href="{% url 'course_delete' course.id %}">Delete</a>
+      <a class="link-danger text-decoration-none m-3" href="{% url 'course_module_update' course.id %}">Edit Module</a>
+      {% if course.modules.count > 0 %}
+        <a class="link-danger text-decoration-none m-3" href="{% url 'module_content_list' course.modules.first.id %}">Manage
+          contents</a>
+      {% endif %}
+    </p>
+  </div>
+</div>
