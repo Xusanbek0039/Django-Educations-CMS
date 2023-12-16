@@ -1,24 +1,18 @@
+# dev.py
+
 from educa.settings.base import *
 
-DEBUG = True
+DEBUG = False
 
 INSTALLED_APPS += ['debug_toolbar']
-
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
 
 # added django_debug_toolbar for docker development, otherwise DDT does not work in docker
-DEBUG_TOOLBAR_CONFIG = {
-    'SHOW_TOOLBAR_CALLBACK': lambda _request: DEBUG
-}
-
+DEBUG_TOOLBAR_CONFIG = True
 DATABASES = {
     'default': {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.environ.get("POSTGRES_DB", "educa"),
-        "USER": os.environ.get("POSTGRES_USER", "postgres"),
-        "PASSWORD": os.environ.get("POSTGRES_PASSWORD", "root"),
-        # "HOST": "host.docker.internal",
-        "HOST": os.environ.get("POSTGRES_HOST", "db"),
-        "PORT": "5432",
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
