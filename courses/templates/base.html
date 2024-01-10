@@ -64,12 +64,12 @@
                   </li>
                   {% if request.user.is_instructor %}
                     <li><a class="dropdown-item" href="{% url 'course_create' %}">Yangi kurs </a></li>
-                    <li><a class="dropdown-item" href="{% url 'manage_course_list' %}">My Courses</a></li>
+                    <li><a class="dropdown-item" href="{% url 'manage_course_list' %}">Mening kursim</a></li>
                     <li>
                       <hr class="dropdown-divider">
                     </li>
                   {% endif %}
-                  <li><a class="dropdown-item" href="{% url 'accounts:password_change' %}">Change Password</a></li>
+                  <li><a class="dropdown-item" href="{% url 'accounts:password_change' %}">Parolni o'zgartirish</a></li>
                   <li><a class="dropdown-item" href="{% url 'accounts:password_reset' %}">Reset Password</a></li>
                   <li><a class="dropdown-item" href="{% url 'accounts:logout' %}">Logout</a></li>
                 </ul>
