@@ -87,3 +87,7 @@ class ChatConsumer(JsonWebsocketConsumer):
             'group_name': message.chat_group.id,
             'created_at': message.created_at.isoformat()
         }
+
+
+
+
