@@ -33,6 +33,9 @@
               <div class="col-md-8 offset-md-2">
                 {% csrf_token %}
 
+
+
+                
                 <ul>
                   {% for non_field_error in form.non_field_errors %}
                     <li class="text-danger">{{ non_field_error }}</li>
