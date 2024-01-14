@@ -39,3 +39,8 @@ class CourseChatRoom(LoginRequiredMixin, View):
             return HttpResponseForbidden()
 
         return render(self.request, self.template_name, {'course': course, 'old_messages': old_messages})
+
+
+
+
+
