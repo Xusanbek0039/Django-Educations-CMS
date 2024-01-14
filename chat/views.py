@@ -7,6 +7,14 @@ from chat.models import Message
 from courses.models import Course
 
 
+
+
+
+
+
+
+
+
 # Create your views here.
 class CourseChatRoom(LoginRequiredMixin, View):
     template_name = 'chat/room.html'
